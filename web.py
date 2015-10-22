@@ -16,7 +16,7 @@ def dict_add(a, b):
 def main():
     for word in WORDS:
         TWEETS[word] = 0;
-    job = group(twitter.subtask(('tweets_' + str(i) + '.txt', WORDS)) for i in range(0,1))
+    job = group(twitter.subtask(('tweets_' + str(i) + '.txt', WORDS)) for i in range(0,20))
 
     result = job.apply_async()
     time.sleep(30)
