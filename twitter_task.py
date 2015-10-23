@@ -30,7 +30,12 @@ def twitter(file_name, words):
     #f = open(file_name, 'r')
     f = urllib2.urlopen('http://smog.uppmax.uu.se:8080/swift/v1/tweets/' + file_name)
     for line in f:
-        for word in words:
-            result[word] += count_word(word, line)
+        if line != '\n':
+            x = json.loads(line)
+            if x['retweeted']:
+                continue
+            else:
+                for word in words:
+                    result[word] += count_word(word, line)
     f.close()
     return result
